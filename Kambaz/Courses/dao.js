@@ -1,3 +1,4 @@
+import { getAllEnrollments } from "../Enrollments/dao.js";
 import model from "./model.js";
 import { v4 as uuidv4 } from "uuid";
 
@@ -6,9 +7,8 @@ export function findAllCourses() {
 }
 
 export function findCoursesForEnrolledUser(userId) {
-    const { courses, enrollments } = Database;
-    const enrolledCourses = courses.filter((course) =>
-    enrollments.some((enrollment) => enrollment.user === userId && enrollment.course === course._id));
+    const enrolledCourses = findAllCourses().filter((course) =>
+    getAllEnrollments().some((enrollment) => enrollment.user === userId && enrollment.course === course._id));
     return enrolledCourses;
 }
 

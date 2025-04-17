@@ -10,8 +10,8 @@ export default function EnrollmentRoutes(app) {
         const status = await enrollmentsDao.enrollUserInCourse(userId, courseId);
         res.send(status);
     });
-    // app.get("/api/enrollments", (req, res) => {
-    //     const enrollments = enrollmentsDao.getAllEnrollments();
-    //     res.send(enrollments);
-    // });
+    app.get("/api/enrollments", async (req, res) => {
+        const enrollments = await enrollmentsDao.getAllEnrollments();
+        res.send(enrollments);
+    });
 }
