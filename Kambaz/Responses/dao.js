@@ -1,28 +1,15 @@
 import { v4 as uuidv4 } from "uuid";
 import model from "./model.js";
 
-// export function findQuizzesForCourse(courseId) {
-//     return model.find({ course: courseId });
-// }
+export function findResponsesForUser(userId) {
+    return model.find({ user: userId });
+}
 
-// export function createQuiz(quiz) {
-//     const newQuiz = { ...quiz, _id: uuidv4() };
-//     return model.create(newQuiz);
-// }
+export function createResponse(response) {
+    const newResponse = { ...response, _id: uuidv4() }
+    return model.create(newResponse);
+}
 
-// export function deleteQuiz(quizId) {
-//     return model.deleteOne({ _id: quizId });
-// }
-
-// export function updateQuiz(quizId, quizUpdates) {
-//     return model.updateOne({ _id: quizId }, quizUpdates);
-// }
-
-// export function togglePublished(quizId) {
-//     const quiz = model.findOne({_id: quizId});
-//     console.log("test15");
-//     console.log(quiz);
-//     console.log(quiz.published);
-//     console.log(!quiz.published);
-//     return model.updateOne({ _id: quizId }, {published: !quiz.published});
-// }
+export function deleteResponsesForUser(userId) {
+    return model.deleteMany({ user: userId });
+}

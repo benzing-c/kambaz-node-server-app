@@ -30,11 +30,14 @@ const quizSchema = new mongoose.Schema({
         type: Number,
         default: 20 //time is given in minutes
     },
-    multipleAttempts: {
-        type: Boolean,
-        default: false
+    numAttempts: {
+        type: Number,
+        default: 1
     },
-    //TODO SHOW CORRECT ANSWERS: Show Correct Answers - If and when correct answers are shown to students
+    showCorrectAnswers: {
+        type: Date,
+        default: "1999-01-01T00:00:00.000+00:00"  
+    },
     accessCode: {
         type: String,
         default: ""

@@ -20,9 +20,5 @@ export function updateQuiz(quizId, quizUpdates) {
 
 export function togglePublished(quizId) {
     const quiz = model.findOne({_id: quizId});
-    console.log("test15");
-    console.log(quiz);
-    console.log(quiz.published);
-    console.log(!quiz.published);
     return model.updateOne({ _id: quizId }, {published: !quiz.published});
 }

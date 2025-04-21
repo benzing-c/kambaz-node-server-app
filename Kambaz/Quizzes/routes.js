@@ -3,9 +3,7 @@ import * as questionsDao from "../QuizQuestions/dao.js";
 export default function QuizRoutes(app) {
     app.put("/api/quizzes/:quizId/publish", async (req, res) => {
         const { quizId } = req.params;
-        console.log("test13");
         const status = await quizzesDao.togglePublished(quizId);
-        console.log("test14");
         res.send(status);
     });
     app.put("/api/quizzes/:quizId", async (req, res) => {
@@ -21,15 +19,12 @@ export default function QuizRoutes(app) {
     });
 
     const findQuestionsForQuiz = async (req, res) => {
-        console.log("routes");
         const { quizId } = req.params;
-        console.log(quizId);
         const questions = await questionsDao.findQuestionsForQuiz(quizId);
         res.json(questions);
     }; app.get("/api/quizzes/:quizId/questions", findQuestionsForQuiz);
 
     const createQuestionForQuiz = async (req, res) => {
-        console.log("heyquiz");
             const { quizId } = req.params;
             const question = {
                 quiz: quizId,

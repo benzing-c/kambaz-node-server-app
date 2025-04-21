@@ -19,4 +19,9 @@ export default function QuestionRoutes(app) {
         const status = await questionsDao.deleteQuestion(questionId);
         res.send(status);
     }; app.delete("/api/questions/:questionId", deleteQuestion);
+
+    const fetchQuestions = async (req, res) => {
+        const questions = await questionsDao.fetchQuestions();
+        res.json(questions);
+    }; app.get("/api/questions/", fetchQuestions);
 }
